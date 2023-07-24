@@ -12,6 +12,7 @@ app = Flask(__name__)
 
 # Set your OpenAI API key here
 # api_key = "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"
+# api_key = "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"
 api_key = os.environ.get('OPENAI_API_KEY')
 # Initialize the OpenAI API
 
@@ -32,7 +33,9 @@ def generate_poem(prompt):
     poem = response['choices'][0]['message']['content']
     return poem.strip()
 
-
+# @app.route("/", methods=["GET"])
+# def home():
+#     return render_template("landingpage.html")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
