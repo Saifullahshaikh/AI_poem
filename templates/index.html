@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Poem and Images</title>
+</head>
+<body>
+    <h1>Generate Poem and Images</h1>
+    <form method="POST" action="/">
+        <label for="prompt">Enter your poem prompt:</label><br>
+        <textarea id="prompt" name="prompt" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Generate">
+    </form>
+    {% if poem %}
+        <h2>Generated Poem:</h2>
+        <pre>{{ poem }}</pre>
+    {% endif %}
+
+    {% if audio_file %}
+        <h2>Audio:</h2>
+        <audio controls>
+            <source src="{{ audio_file }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    {% endif %}
+
+    <div>
+        {% if images %}
+        <h2>Generated Images:</h2>
+            {% for image_url in images %}
+                <img src="{{ image_url }}" style="max-width: 256px; margin: 10px;">
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    </body>
+</html>
